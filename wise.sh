@@ -48,7 +48,6 @@ www.eden        IN      CNAME   eden.wise.a07.com.
 service bind9 restart
 
 # nomor 4
-
 echo '
 zone "wise.a07.com" {
         type master;

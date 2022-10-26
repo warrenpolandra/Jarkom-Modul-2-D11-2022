@@ -6,10 +6,10 @@ apt-get update
 apt-get update
 apt-get install bind9 -y
 echo '
-zone "wise.a07.com" {
+zone "wise.d11.com" {
         type slave;
-        masters { 192.172.1.2; }; // Masukan IP Wise tanpa tanda petik
-        file "/var/lib/bind/wise.a07.com";
+        masters { 192.190.1.2; }; // Masukan IP Wise tanpa tanda petik
+        file "/var/lib/bind/wise.d11.com";
 };
 ' > /etc/bind/named.conf.local
 service bind9 restart
@@ -25,50 +25,50 @@ options {
 };
 " > /etc/bind/named.conf.options
 echo '
-zone "wise.a07.com" {
+zone "wise.d11.com" {
         type slave;
-        masters { 192.172.1.2; }; // Masukan IP Wise tanpa tanda petik
-        file "/var/lib/bind/wise.a07.com";
+        masters { 192.190.1.2; }; // Masukan IP Wise tanpa tanda petik
+        file "/var/lib/bind/wise.d11.com";
 };
 
-zone "operation.wise.a07.com"{
+zone "operation.wise.d11.com"{
         type master;
-        file "/etc/bind/operation/operation.wise.a07.com";
+        file "/etc/bind/operation/operation.wise.d11.com";
 };
 '> /etc/bind/named.conf.local
 mkdir /etc/bind/operation
 echo "
 \$TTL    604800
-@       IN      SOA     operation.wise.a07.com. root.operation.wise.a07.com. (
+@       IN      SOA     operation.wise.d11.com. root.operation.wise.d11.com. (
                                 2      ; Serial
                         604800         ; Refresh
                         86400         ; Retry
                         2419200         ; Expire
                         604800 )       ; Negative Cache TTL
 ;
-@               IN      NS      operation.wise.a07.com.
-@               IN      A       192.172.3.3       ;ip Eden
-www             IN      CNAME   operation.wise.a07.com.
-" > /etc/bind/operation/operation.wise.a07.com
+@               IN      NS      operation.wise.d11.com.
+@               IN      A       192.190.3.3       ;ip Eden
+www             IN      CNAME   operation.wise.d11.com.
+" > /etc/bind/operation/operation.wise.d11.com
 service bind9 restart
 
 
 # Nomor 7
 echo "
 \$TTL    604800
-@       IN      SOA     operation.wise.a07.com. root.operation.wise.a07.com. (
+@       IN      SOA     operation.wise.d11.com. root.operation.wise.d11.com. (
                                 2      ; Serial
                         604800         ; Refresh
                         86400         ; Retry
                         2419200         ; Expire
                         604800 )       ; Negative Cache TTL
 ;
-@               IN      NS      operation.wise.a07.com.
-@               IN      A       192.172.3.3       ;ip Eden
-www             IN      CNAME   operation.wise.a07.com.
-strix         IN      A       192.172.3.3       ;IP Eden
-www.strix     IN      CNAME   strix.operation.wise.a07.com.
-" > /etc/bind/operation/operation.wise.a07.com
+@               IN      NS      operation.wise.d11.com.
+@               IN      A       192.190.3.3       ;ip Eden
+www             IN      CNAME   operation.wise.d11.com.
+strix         IN      A       192.190.3.3       ;IP Eden
+www.strix     IN      CNAME   strix.operation.wise.d11.com.
+" > /etc/bind/operation/operation.wise.d11.com
 service bind9 restart
 
 }
@@ -80,8 +80,8 @@ apt-get install dnsutils -y
 apt-get install lynx -y
 # nomor 5
 echo "
-nameserver 192.172.1.2
-nameserver 192.172.3.2
-nameserver 192.172.3.3
+nameserver 192.190.1.2
+nameserver 192.190.3.2
+nameserver 192.190.3.3
 
 " > /etc/resolv.conf

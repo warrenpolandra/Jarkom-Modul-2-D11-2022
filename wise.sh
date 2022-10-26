@@ -9,49 +9,50 @@ file "/etc/bind/wise/wise.d11.com";
 };'
 
 # nomor 2
-echo 'zone "wise.a07.com" {
+echo 'zone "wise.d11.com" {
         type master;
-        file "/etc/bind/wise/wise.a07.com";
+        file "/etc/bind/wise/wise.d11.com";
 };' > /etc/bind/named.conf.local
 mkdir /etc/bind/wise
 echo "
 \$TTL    604800
-@       IN      SOA     wise.a07.com. root.wise.a07.com. (
+@       IN      SOA     wise.d11.com. root.wise.d11.com. (
                                 2       ; Serial
                         604800          ; Refresh
                         86400           ; Retry
                         2419200         ; Expire
                         604800 )        ; Negative Cache TTL
 ;
-@               IN      NS      wise.a07.com.
-@               IN      A       192.172.1.2 ; IP Wise
-www             IN      CNAME   wise.a07.com.
-" > /etc/bind/wise/wise.a07.com
+@               IN      NS      wise.d11.com.
+@               IN      A       192.190.1.2 ; IP Wise
+www             IN      CNAME   wise.d11.com.
+" > /etc/bind/wise/wise.d11.com
 service bind9 restart
 
 # nomor 3
 echo "
 \$TTL    604800
-@       IN      SOA     wise.a07.com. root.wise.a07.com. (
+@       IN      SOA     wise.d11.com. root.wise.d11.com. (
                                 2       ; Serial
                         604800          ; Refresh
                         86400           ; Retry
                         2419200         ; Expire
                         604800 )        ; Negative Cache TTL
 ;
-@               IN      NS      wise.a07.com.
-@               IN      A       192.172.1.2 ; IP Wise
-www             IN      CNAME   wise.a07.com.
-eden            IN      A       192.172.3.3 ; IP Eden
-www.eden        IN      CNAME   eden.wise.a07.com.
-" > /etc/bind/wise/wise.a07.com
+@               IN      NS      wise.d11.com.
+@               IN      A       192.190.1.2 ; IP Wise
+www             IN      CNAME   wise.d11.com.
+eden            IN      A       192.190.3.3 ; IP Eden
+www.eden        IN      CNAME   eden.wise.d11.com.
+" > /etc/bind/wise/wise.d11.com
 service bind9 restart
 
 # nomor 4
+
 echo '
-zone "wise.a07.com" {
+zone "wise.d11.com" {
         type master;
-        file "/etc/bind/wise/wise.a07.com";
+        file "/etc/bind/wise/wise.d11.com";
 };
 
 zone "2.172.192.in-addr.arpa" {
@@ -61,15 +62,15 @@ zone "2.172.192.in-addr.arpa" {
 
 echo "
 \$TTL    604800
-@       IN      SOA     wise.a07.com. root.wise.a07.com. (
+@       IN      SOA     wise.d11.com. root.wise.d11.com. (
                                 2       ; Serial
                         604800          ; Refresh
                         86400           ; Retry
                         2419200         ; Expire
                         604800 )        ; Negative Cache TTL
 ;
-2.172.192.in-addr.arpa.   IN      NS      wise.a07.com.
-2                       IN      PTR     wise.a07.com.
+2.172.192.in-addr.arpa.   IN      NS      wise.d11.com.
+2                       IN      PTR     wise.d11.com.
 "> /etc/bind/wise/2.172.192.in-addr.arpa
 service bind9 restart
 
@@ -77,12 +78,12 @@ service bind9 restart
 # nomor 5
 
 echo '
-zone "wise.a07.com" {
+zone "wise.d11.com" {
         type master;
         notify yes;
-        also-notify {192.172.3.2;};  //Masukan IP Berlint tanpa tanda petik
-        allow-transfer {192.172.3.2;}; // Masukan IP Berlint tanpa tanda petik
-        file "/etc/bind/wise/wise.a07.com";
+        also-notify {192.190.3.2;};  //Masukan IP Berlint tanpa tanda petik
+        allow-transfer {192.190.3.2;}; // Masukan IP Berlint tanpa tanda petik
+        file "/etc/bind/wise/wise.d11.com";
 };
 
 zone "2.172.192.in-addr.arpa" {
@@ -94,7 +95,7 @@ service bind9 restart
 # nomor 6
 echo "
 \$TTL    604800
-@       IN      SOA     wise.d11.com. root.wise.a07.com. (
+@       IN      SOA     wise.d11.com. root.wise.d11.com. (
                                 2       ; Serial
                         604800          ; Refresh
                         86400           ; Retry
@@ -102,13 +103,13 @@ echo "
                         604800 )        ; Negative Cache TTL
 ;
 @       IN      NS      wise.d11.com.
-@               IN      A       192.172.3.3 ; IP Eden
-www             IN      CNAME   wise.a07.com.
-eden           IN      A       192.172.3.3 ; IP Eden
-www.eden       IN      CNAME   eden.wise.a07.com.
-ns1             IN      A       192.172.3.2; IP Berlint
+@               IN      A       192.190.3.3 ; IP Eden
+www             IN      CNAME   wise.d11.com.
+eden           IN      A       192.190.3.3 ; IP Eden
+www.eden       IN      CNAME   eden.wise.d11.com.
+ns1             IN      A       192.190.3.2; IP Berlint
 operation           IN      NS      ns1
-"> /etc/bind/wise/wise.a07.com
+"> /etc/bind/wise/wise.d11.com
 
 echo "
 options {
@@ -121,12 +122,12 @@ options {
 " > /etc/bind/named.conf.options
 
 echo '
-zone "wise.a07.com" {
+zone "wise.d11.com" {
         type master;
         //notify yes;
-        //also-notify {192.172.3.2;};  Masukan IP Berlint tanpa tanda petik
-        file "/etc/bind/wise/wise.a07.com";
-        allow-transfer {192.172.3.2;}; // Masukan IP Berlint tanpa tanda petik
+        //also-notify {192.190.3.2;};  Masukan IP Berlint tanpa tanda petik
+        file "/etc/bind/wise/wise.d11.com";
+        allow-transfer {192.190.3.2;}; // Masukan IP Berlint tanpa tanda petik
 };
 
 zone "2.172.192.in-addr.arpa" {
@@ -146,10 +147,10 @@ apt-get update
 apt-get update
 apt-get install bind9 -y
 echo '
-zone "wise.a07.com" {
+zone "wise.d11.com" {
         type slave;
-        masters { 192.172.1.2; }; // Masukan IP Wise tanpa tanda petik
-        file "/var/lib/bind/wise.a07.com";
+        masters { 192.190.1.2; }; // Masukan IP Wise tanpa tanda petik
+        file "/var/lib/bind/wise.d11.com";
 };
 ' > /etc/bind/named.conf.local
 service bind9 restart
@@ -165,48 +166,48 @@ options {
 };
 " > /etc/bind/named.conf.options
 echo '
-zone "wise.a07.com" {
+zone "wise.d11.com" {
         type slave;
-        masters { 192.172.1.2; }; // Masukan IP Wise tanpa tanda petik
-        file "/var/lib/bind/wise.a07.com";
+        masters { 192.190.1.2; }; // Masukan IP Wise tanpa tanda petik
+        file "/var/lib/bind/wise.d11.com";
 };
 
-zone "operation.wise.a07.com"{
+zone "operation.wise.d11.com"{
         type master;
-        file "/etc/bind/operation/operation.wise.a07.com";
+        file "/etc/bind/operation/operation.wise.d11.com";
 };
 '> /etc/bind/named.conf.local
 mkdir /etc/bind/operation
 echo "
 \$TTL    604800
-@       IN      SOA     operation.wise.a07.com. root.operation.wise.a07.com. (
+@       IN      SOA     operation.wise.d11.com. root.operation.wise.d11.com. (
                                 2      ; Serial
                         604800         ; Refresh
                         86400         ; Retry
                         2419200         ; Expire
                         604800 )       ; Negative Cache TTL
 ;
-@               IN      NS      operation.wise.a07.com.
-@               IN      A       192.172.3.3       ;ip Eden
-www             IN      CNAME   operation.wise.a07.com.
-" > /etc/bind/operation/operation.wise.a07.com
+@               IN      NS      operation.wise.d11.com.
+@               IN      A       192.190.3.3       ;ip Eden
+www             IN      CNAME   operation.wise.d11.com.
+" > /etc/bind/operation/operation.wise.d11.com
 service bind9 restart
 
 
 # Nomor 7
 echo "
 \$TTL    604800
-@       IN      SOA     operation.wise.a07.com. root.operation.wise.a07.com. (
+@       IN      SOA     operation.wise.d11.com. root.operation.wise.d11.com. (
                                 2      ; Serial
                         604800         ; Refresh
                         86400         ; Retry
                         2419200         ; Expire
                         604800 )       ; Negative Cache TTL
 ;
-@               IN      NS      operation.wise.a07.com.
-@               IN      A       192.172.3.3       ;ip Eden
-www             IN      CNAME   operation.wise.a07.com.
-strix         IN      A       192.172.3.3       ;IP Eden
-www.strix     IN      CNAME   strix.operation.wise.a07.com.
-" > /etc/bind/operation/operation.wise.a07.com
+@               IN      NS      operation.wise.d11.com.
+@               IN      A       192.190.3.3       ;ip Eden
+www             IN      CNAME   operation.wise.d11.com.
+strix         IN      A       192.190.3.3       ;IP Eden
+www.strix     IN      CNAME   strix.operation.wise.d11.com.
+" > /etc/bind/operation/operation.wise.d11.com
 service bind9 restart

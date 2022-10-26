@@ -55,9 +55,9 @@ zone "wise.d11.com" {
         file "/etc/bind/wise/wise.d11.com";
 };
 
-zone "2.172.192.in-addr.arpa" {
+zone "2.190.192.in-addr.arpa" {
         type master;
-        file "/etc/bind/wise/2.172.192.in-addr.arpa";
+        file "/etc/bind/wise/2.190.192.in-addr.arpa";
 };' > /etc/bind/named.conf.local
 
 echo "
@@ -69,9 +69,9 @@ echo "
                         2419200         ; Expire
                         604800 )        ; Negative Cache TTL
 ;
-2.172.192.in-addr.arpa.   IN      NS      wise.d11.com.
+2.190.192.in-addr.arpa.   IN      NS      wise.d11.com.
 2                       IN      PTR     wise.d11.com.
-"> /etc/bind/wise/2.172.192.in-addr.arpa
+"> /etc/bind/wise/2.190.192.in-addr.arpa
 service bind9 restart
 
 
@@ -86,9 +86,9 @@ zone "wise.d11.com" {
         file "/etc/bind/wise/wise.d11.com";
 };
 
-zone "2.172.192.in-addr.arpa" {
+zone "2.190.192.in-addr.arpa" {
         type master;
-        file "/etc/bind/wise/2.172.192.in-addr.arpa";
+        file "/etc/bind/wise/2.190.192.in-addr.arpa";
 };' > /etc/bind/named.conf.local
 service bind9 restart
 
@@ -130,9 +130,9 @@ zone "wise.d11.com" {
         allow-transfer {192.190.3.2;}; // Masukan IP Berlint tanpa tanda petik
 };
 
-zone "2.172.192.in-addr.arpa" {
+zone "2.190.192.in-addr.arpa" {
         type master;
-        file "/etc/bind/wise/2.172.192.in-addr.arpa";
+        file "/etc/bind/wise/2.190.192.in-addr.arpa";
 };
 ' >  /etc/bind/named.conf.local
 

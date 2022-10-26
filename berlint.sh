@@ -70,18 +70,3 @@ strix         IN      A       192.190.3.3       ;IP Eden
 www.strix     IN      CNAME   strix.operation.wise.d11.com.
 " > /etc/bind/operation/operation.wise.d11.com
 service bind9 restart
-
-}
-
-SSS(){
-echo "nameserver 192.168.122.1" > /etc/resolv.conf
-apt-get update
-apt-get install dnsutils -y
-apt-get install lynx -y
-# nomor 5
-echo "
-nameserver 192.190.1.2
-nameserver 192.190.3.2
-nameserver 192.190.3.3
-
-" > /etc/resolv.conf

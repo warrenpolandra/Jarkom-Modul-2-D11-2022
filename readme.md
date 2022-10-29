@@ -45,11 +45,9 @@ IP Address dari masing-masing node adalah:
 
 ## Nomor 8
 
-1. Untuk konfigurasi web server diperlukan instalasi update, apache, dan php seperti gambar di bawah ini.
+1. Untuk konfigurasi web server diperlukan instalasi update, apache, dan php
 
-![]()
-
-2. setelah itu konfigurasi server dibuat sesuai gambar berikut dengan ServerName adalah `wise.d11.com` dan ServerAliasnya adalah `www.wise.d11.com` File ini disimpan dalam folder `/etc/apache2/sites-available/wise.d11.com`.
+2. setelah itu konfigurasi server dibuat sesuai berikut dengan ServerName adalah `wise.d11.com` dan ServerAliasnya adalah `www.wise.d11.com` File ini disimpan dalam folder `/etc/apache2/sites-available/wise.d11.com`.
 
 3. Kemudian file requirement untuk wise dipindahkan ke `var/www/wise.d11.com`
 

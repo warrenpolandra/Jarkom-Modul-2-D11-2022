@@ -1,10 +1,5 @@
 # Jarkom-Modul-2-D11-2022
 
-## Pembagian tugas
-- Beryl: wise.sh
-- Afira: berlint.sh
-- Warren: eden.sh, garden.sh, sss.sh, topologi
-
 ## Nomor 1
 
 topologi dibuat sesuai gambar yang ada pada gambar soal shift
@@ -41,24 +36,35 @@ IP Address dari masing-masing node adalah:
 
 1. Ubah zone `wise.d11.com` agar dapat me-notify Berlint di file `/etc/bind/named.conf.local`
 2. Restart bind9 dan konfigurasi untuk DNS Master sudah selesai
-3. Buat zone baru untuk `wise.d11.com` dengan type serta IP Wise sebagai DNS Masternya pada DNS slave di file `/etc/bind/named.conf.local`
-4. Restart bind9 ddan konfigurasi DNS Slave sudah selesai
+3. pada wise melakukan konfigurasi pada named.conf.local kita nambahin notify yes; 
+        also-notify {192.190.3.2;};  //Masukan IP Berlint tanpa tanda petik
+        allow-transfer {192.190.3.2;}; // Masukan IP Berlint tanpa tanda petik
+        setelah itu melakukan restart menggunakan service bind9 restart
+mengarahkan berlint ke router `nameserver 192.168.122.1` kemudian melakukan update dan install bind9 -y, setelah itu kita menggunkan konfigurasi pada file /etc/bind/named.conf.local, setelah itu melakukan restart, kemudian kite ke wise lagi dan menghentikan wise dengan service bind9 stop kemudian ke client ke sss atau garden dan melakukan ping pada wise.d11.com 
 
 ## Nomor 6
 
 1. Tambahkan konfigurasi delegasi subdomain yang mengarah ke Berlint pada file `/etc/bind/wise/wise.d11.com
-2. Konfigurasi delegasi subdomain pada file /etc/bind/named.conf.options DNS Master
-3. Edit option di file `/etc/bind/named.conf/options` pada DNS Slave
-4. Tambahkan zone `operation.wise.d11.com`
-5. Konfigurasi subdomain `www.operation.wise.d11.com` pada file `/etc/bind/operation/operation.wise.d11.com`
-6. Restart bind9 dan delegasi subdomain siap dipakai
+2. Konfigurasi delegasi subdomain pada file /etc/bind/named.conf.options
+3. Restart bind9 dan delegasi subdomain siap dipakai
+4. Pada file `/etc/bind/wise/wise.a07.com` melakukan konfigurasi dengan menambahkan ns1             IN      A       192.190.3.2; IP Berlint
+operation           IN      NS      ns1
+setelah itu membuka file `/etc/bind/named.conf.options` dan menambahkan ` allow-query{any;};` setelah itu membuka file `/etc/bind/named.conf.local` dan mengcoment ` //notify yes;
+        //also-notify {192.190.3.2;};`
+setelah itu melakukan restart, kemudian kita ke berlint pada berlint ini kita melakukan membuka file `/etc/bind/named.conf.options` kita tambahkan ` allow-query{any;};` setelah itu ke file ` /etc/bind/named.conf.local` disini kita menambahkan `zone "operation.wise.d11.com"{
+        type master;
+        file "/etc/bind/operation/operation.wise.d11.com";
+};` setelah itu kita membuat file `mkdir /etc/bind/operation` 
+kemudian membuka file `/etc/bind/operation/operation.wise.a07.com` menambahkan `@               IN      NS      operation.wise.d11.com.
+@               IN      A       192.190.3.3       ;ip Eden
+www             IN      CNAME   operation.wise.d11.com.`
+setelah itu melakukan restart setelah itu melakukan ping `www.operation.wise.d11.com`  
 
 ## Nomor 7
+1. membuka file `/etc/bind/operation/operation.wise.d11.com`membuka file tambahkan `strix         IN      A       192.190.3.3       ;IP Eden
+www.strix     IN      CNAME   strix.operation.wise.d11.com.` setelah itu ke restart , kemudian melakukan ping `www.strix.operation.wise.d11.com`
 
-1. Konfigurasi subomain www.strix.operation.wise.d11.com pada file `/etc/bind/operation/operation.wise.d11.com`
-2. Restart bind9 dan konfigurasi sudah siap dipakai
-
-## Nomor 8
+## Nomor 8 
 
 1. Untuk konfigurasi web server diperlukan instalasi update, apache, dan php
 
@@ -140,10 +146,5 @@ IP Address dari masing-masing node adalah:
 
 4. Restart apache2 dan konfigurasi webserver sudah siap digunakan
 
-![](https://cdn.discordapp.com/attachments/856609726225973278/1035885224065777754/unknown.png)
-![](https://cdn.discordapp.com/attachments/856609726225973278/1035902137051398256/unknown.png)
-![](https://cdn.discordapp.com/attachments/856609726225973278/1035902628393123912/unknown.png)
-
 ## Kendala yang dialami
-- Salah satu anggota kami tidak bisa menggunakan GNS 
-- Terkadang ping tidak bisa dilakukan meskipun konfigurasi sudah benar, sehingga project harus direload ulang
+- Salah satu anggota kami  tidak bisa menggunakan GNS 

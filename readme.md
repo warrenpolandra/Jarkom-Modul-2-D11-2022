@@ -126,4 +126,5 @@ IP Address dari masing-masing node adalah:
 4. Restart apache2 dan konfigurasi webserver sudah siap digunakan
 
 ## Kendala yang dialami
+- Salah satu anggota kami  tidak bisa menggunakan GNS 
 - 

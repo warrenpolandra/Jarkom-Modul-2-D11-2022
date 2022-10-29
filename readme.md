@@ -126,3 +126,6 @@ IP Address dari masing-masing node adalah:
 3. Edit konfigurasi webserver untuk wise.d11.com
 
 4. Restart apache2 dan konfigurasi webserver sudah siap digunakan
+
+## Kendala yang dialami
+- 

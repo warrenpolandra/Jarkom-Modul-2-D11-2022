@@ -140,6 +140,10 @@ IP Address dari masing-masing node adalah:
 
 4. Restart apache2 dan konfigurasi webserver sudah siap digunakan
 
+![](https://cdn.discordapp.com/attachments/856609726225973278/1035885224065777754/unknown.png)
+![](https://cdn.discordapp.com/attachments/856609726225973278/1035902137051398256/unknown.png)
+![](https://cdn.discordapp.com/attachments/856609726225973278/1035902628393123912/unknown.png)
+
 ## Kendala yang dialami
 - Salah satu anggota kami tidak bisa menggunakan GNS 
 - Terkadang ping tidak bisa dilakukan meskipun konfigurasi sudah benar, sehingga project harus direload ulang

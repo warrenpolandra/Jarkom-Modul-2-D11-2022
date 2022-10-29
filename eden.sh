@@ -19,10 +19,9 @@ apt-get install ca-certificates openssl -y
 apt-get install unzip -y
 apt-get install git -y
 
-git clone https://github.com/fannyfaizul/Praktikum-Modul-2-Jarkom.git
-unzip -o /root/Praktikum-Modul-2-Jarkom/\*.zip -d /root/Praktikum-Modul-2-Jarkom
+git clone https://github.com/warrenpolandra/Jarkom-Modul-2-D11-2022.git
+unzip -o /root/Jarkom-Modul-2-D11-2022/\*.zip -d /root/Jarkom-Modul-2-D11-2022
 
-  
 # webserver
 echo " <VirtualHost *:80>
         ServerAdmin webmaster@localhost
@@ -36,10 +35,10 @@ echo " <VirtualHost *:80>
 
 a2ensite wise.d11.com
 mkdir /var/www/wise.d11.com
-cp -r /root/Praktikum-Modul-2-Jarkom/wise/. /var/www/wise.d11.com
+cp -r /root/Jarkom-Modul-2-D11-2022/wise/. /var/www/wise.d11.com
 service apache2 restart
 
-# nomor 10
+# nomor 9
 # index.pho => home
 a2enmod rewrite
 service apache2 restart
@@ -65,6 +64,7 @@ echo "<VirtualHost *:80>
 
 service apache2 restart
 
+# nomor 10
 # konfigurasi subdomain www.eden.wise.d11.com
 echo "<VirtualHost *:80>
 
@@ -84,7 +84,7 @@ echo "<VirtualHost *:80>
 
 a2ensite eden.wise.d11.com
 mkdir /var/www/eden.wise.d11.com
-cp -r /root/Praktikum-Modul-2-Jarkom/eden.wise/. /var/www/eden.wise.d11.com
+cp -r /root/Jarkom-Modul-2-D11-2022/eden.wise/. /var/www/eden.wise.d11.com
 service apache2 restart
 echo "<?php echo 'nomor 10' ?>" > /var/www/eden.wise.d11.com/index.php
 
@@ -110,7 +110,8 @@ echo "<VirtualHost *:80>
 </VirtualHost>" > /etc/apache2/sites-available/eden.wise.d11.com.conf
 service apache2 restart
 
-# error file (no.12)
+# nomor 12
+# error file
 echo "<VirtualHost *:80>
         ServerAdmin webmaster@localhost
         DocumentRoot /var/www/eden.wise.d11.com
@@ -196,7 +197,7 @@ echo "<VirtualHost *:15000>
 a2ensite strix.operation.wise.d11.com
 service apache2 restart
 mkdir /var/www/strix.operation.wise.d11.com
-cp -r /root/Praktikum-Modul-2-Jarkom/strix.operation.wise/. /var/www/strix.operation.wise.d11.com/
+cp -r /root/Jarkom-Modul-2-D11-2022/strix.operation.wise/. /var/www/strix.operation.wise.d11.com/
 echo "<?php echo 'nomor 14';?>" > /var/www/strix.operation.wise.d11.com/index.php
 echo "# If you just change the port or add more ports here, you will likely also
 # have to change the VirtualHost statement in

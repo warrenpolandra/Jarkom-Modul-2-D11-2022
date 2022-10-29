@@ -1,5 +1,10 @@
 # Jarkom-Modul-2-D11-2022
 
+## Pembagian tugas
+- Beryl: wise.sh
+- Afira: berlint.sh
+- Warren: eden.sh, garden.sh, sss.sh, topologi
+
 ## Nomor 1
 
 topologi dibuat sesuai gambar yang ada pada gambar soal shift
@@ -36,12 +41,22 @@ IP Address dari masing-masing node adalah:
 
 1. Ubah zone `wise.d11.com` agar dapat me-notify Berlint di file `/etc/bind/named.conf.local`
 2. Restart bind9 dan konfigurasi untuk DNS Master sudah selesai
+3. Buat zone baru untuk `wise.d11.com` dengan type serta IP Wise sebagai DNS Masternya pada DNS slave di file `/etc/bind/named.conf.local`
+4. Restart bind9 ddan konfigurasi DNS Slave sudah selesai
 
 ## Nomor 6
 
 1. Tambahkan konfigurasi delegasi subdomain yang mengarah ke Berlint pada file `/etc/bind/wise/wise.d11.com
-2. Konfigurasi delegasi subdomain pada file /etc/bind/named.conf.options
-3. Restart bind9 dan delegasi subdomain siap dipakai
+2. Konfigurasi delegasi subdomain pada file /etc/bind/named.conf.options DNS Master
+3. Edit option di file `/etc/bind/named.conf/options` pada DNS Slave
+4. Tambahkan zone `operation.wise.d11.com`
+5. Konfigurasi subdomain `www.operation.wise.d11.com` pada file `/etc/bind/operation/operation.wise.d11.com`
+6. Restart bind9 dan delegasi subdomain siap dipakai
+
+## Nomor 7
+
+1. Konfigurasi subomain www.strix.operation.wise.d11.com pada file `/etc/bind/operation/operation.wise.d11.com`
+2. Restart bind9 dan konfigurasi sudah siap dipakai
 
 ## Nomor 8
 
@@ -126,5 +141,5 @@ IP Address dari masing-masing node adalah:
 4. Restart apache2 dan konfigurasi webserver sudah siap digunakan
 
 ## Kendala yang dialami
-- Salah satu anggota kami  tidak bisa menggunakan GNS 
-- 
+- Salah satu anggota kami tidak bisa menggunakan GNS 
+- Terkadang ping tidak bisa dilakukan meskipun konfigurasi sudah benar, sehingga project harus direload ulang

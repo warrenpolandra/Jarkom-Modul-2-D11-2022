@@ -47,7 +47,7 @@ mengarahkan berlint ke router `nameserver 192.168.122.1` kemudian melakukan upda
 1. Tambahkan konfigurasi delegasi subdomain yang mengarah ke Berlint pada file `/etc/bind/wise/wise.d11.com
 2. Konfigurasi delegasi subdomain pada file /etc/bind/named.conf.options
 3. Restart bind9 dan delegasi subdomain siap dipakai
-4. Pada file `/etc/bind/wise/wise.a07.com` melakukan konfigurasi dengan menambahkan ns1             IN      A       192.190.3.2; IP Berlint
+4. Pada file `/etc/bind/wise/wise.d11.com` melakukan konfigurasi dengan menambahkan ns1             IN      A       192.190.3.2; IP Berlint
 operation           IN      NS      ns1
 setelah itu membuka file `/etc/bind/named.conf.options` dan menambahkan ` allow-query{any;};` setelah itu membuka file `/etc/bind/named.conf.local` dan mengcoment ` //notify yes;
         //also-notify {192.190.3.2;};`

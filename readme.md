@@ -55,7 +55,7 @@ setelah itu melakukan restart, kemudian kita ke berlint pada berlint ini kita me
         type master;
         file "/etc/bind/operation/operation.wise.d11.com";
 };` setelah itu kita membuat file `mkdir /etc/bind/operation` 
-kemudian membuka file `/etc/bind/operation/operation.wise.a07.com` menambahkan `@               IN      NS      operation.wise.d11.com.
+kemudian membuka file `/etc/bind/operation/operation.wise.d11.com` menambahkan `@               IN      NS      operation.wise.d11.com.
 @               IN      A       192.190.3.3       ;ip Eden
 www             IN      CNAME   operation.wise.d11.com.`
 setelah itu melakukan restart setelah itu melakukan ping `www.operation.wise.d11.com`  

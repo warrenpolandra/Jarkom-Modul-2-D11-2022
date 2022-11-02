@@ -66,6 +66,55 @@ www.strix     IN      CNAME   strix.operation.wise.d11.com.` setelah itu ke rest
 
 ## Nomor 8 
 
+Konfigurasi web server:
+
+instalasi Apache
+```
+apt-get install apache2 -y
+service apache2 start
+```
+
+instalasi PHP
+
+```
+apt-get install php -y
+apt-get install libapache2-mod-php7.0 -y
+```
+
+instalasi tools lainnya
+
+```
+service apache2 
+apt-get install ca-certificates openssl -y
+apt-get install unzip -y
+apt-get install git -y
+
+git clone https://github.com/warrenpolandra/Jarkom-Modul-2-D11-2022.git
+unzip -o /root/Jarkom-Modul-2-D11-2022/\*.zip -d /root/Jarkom-Modul-2-D11-2022
+```
+
+
+webserver
+
+```
+echo " <VirtualHost *:80>
+        ServerAdmin webmaster@localhost
+        DocumentRoot /var/www/wise.d11.com
+        ServerName wise.d11.com
+        ServerAlias www.wise.d11.com
+
+        ErrorLog \${APACHE_LOG_DIR}/error.log
+        CustomLog \${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>" > /etc/apache2/sites-available/wise.d11.com.conf
+
+a2ensite wise.d11.com
+mkdir /var/www/wise.d11.com
+cp -r /root/Praktikum-Modul-2-Jarkom/wise/. /var/www/wise.d11.com
+service apache2 restart
+```
+
+Penjelasan:
+
 1. Untuk konfigurasi web server diperlukan instalasi update, apache, dan php
 
 2. setelah itu konfigurasi server dibuat sesuai berikut dengan ServerName adalah `wise.d11.com` dan ServerAliasnya adalah `www.wise.d11.com` File ini disimpan dalam folder `/etc/apache2/sites-available/wise.d11.com`.
@@ -75,6 +124,8 @@ www.strix     IN      CNAME   strix.operation.wise.d11.com.` setelah itu ke rest
 4. Setelah itu konfigurasi web server yang sudah dibuat di-enable dengan command `a2ensite wise.d11.com` dn
 
 ## Nomor 9
+
+Penjelasan:
 
 1. Dalam mengubah URL `www.wise.yyy.com/index.php/home` menjadi `www.wise.yyy.com/home`, module RewriteRule digunakan pada file `/var/www/wise.d11.com/.htaccess` untuk dapat mengakses file .php.
 

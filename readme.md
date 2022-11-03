@@ -198,4 +198,5 @@ Penjelasan:
 4. Restart apache2 dan konfigurasi webserver sudah siap digunakan
 
 ## Kendala yang dialami
-- Salah satu anggota kami  tidak bisa menggunakan GNS 
+- Salah satu anggota kami tidak bisa menggunakan GNS 
+- Pada bagian web server, testing sulit dilakukan karena console terus menampilkan "This site requires javascript and cookies to be enabled" Padahal javascript dan cookies sudah di-enable.
